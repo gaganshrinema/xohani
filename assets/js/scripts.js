@@ -33,6 +33,12 @@ $(function() {
 
     $(function() {
 
+        // Default light mode
+        if (!localStorage.getItem("light-mode")) {
+            localStorage.setItem("light-mode", "set");
+            $("body").addClass("light");
+        }
+
         function isLight() {
             return localStorage.getItem("light-mode");
         }
@@ -51,18 +57,13 @@ $(function() {
             }
         }
 
-        if (isLight()) {
-            toggleRootClass();
-        }
-
         document.querySelector(".theme-icon").addEventListener("click", () => {
             toggleLocalStorageItem();
             toggleRootClass();
         });
 
-        $("body.light .navbar .logo img , body.light footer .logo img").attr("src", "assets/imgs/logo-dark.svg");
-
     });
+
 
 
     /* =============================================================================
